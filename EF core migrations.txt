@@ -1,0 +1,3 @@
+в cmd из папки StaffList.Database
+dotnet ef --startup-project ../StaffList migrations add InitialCreate
+dotnet ef --startup-project ../StaffList database update

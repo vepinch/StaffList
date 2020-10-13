@@ -1,0 +1,81 @@
+﻿@page
+@model StaffList.UI.Pages.Employees.IndexModel
+@{
+}
+
+<div id="app">
+    <div>
+        <div v-if="!editing">
+            <button class="button" @@click="newEmployee">Add new employee</button>
+            <table class="table">
+                <tr>
+                    <td>Full Name</td>
+                    <td>Position</td>
+                    <td>Birthday</td>
+                    <td>Description</td>
+                    <td>MaternityLeave</td>
+                </tr>
+                <tr v-for="employee in employees">
+                    <td>{{employee.fullName}}</td>
+                    <td>{{employee.position}}</td>
+                    <td>{{employee.birthday}}</td>
+                    <td>{{employee.description}}</td>
+                    <td>{{employee.maternityLeave}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div v-else>
+            <div class="field">
+                <label class="label">Employee full name</label>
+                <div class="control">
+                    <input class="input" v-model="employeeModel.fullName" />
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Employee position</label>
+                <div class="control">
+                    <input class="input" v-model="employeeModel.position" />
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Employee birthday</label>
+                <div class="control">
+                    <input class="input" type="date" v-model="employeeModel.birthday" />
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Employee description</label>
+                <div class="control">
+                    <input class="input" v-model="employeeModel.description" />
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" >Maternity Leave</label>
+                <div class="control">
+                    <input class="input" type="checkbox" v-model="employeeModel.maternityLeave" />
+                </div>
+            </div>
+
+
+
+            <button class="button is-success" @@click="createEmployee" >Create Employee</button>
+
+            <button class="button" @@click="cancel">Cancel</button>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+    @section scripts{
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+        <script src="~/js/employees.js"></script>
+    }
